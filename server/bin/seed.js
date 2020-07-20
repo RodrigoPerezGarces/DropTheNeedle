@@ -16,7 +16,7 @@ const vinyls = [
         image: 'https://img.discogs.com/pN_U-H74Q5Okl-mvunT3bC34pcM=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7635294-1445697551-9159.jpeg.jpg',
         artists: 'Fat Freddys DRop',
         label: 'The Drop',
-        genre: 'Reggae/Dancehall',
+        genre: 'Reggae',
         price: 24.99 ,
         year: 2015 ,
         CatNo: 'DRP025LP',
@@ -35,7 +35,7 @@ const vinyls = [
     },
     {
         title: 'Mahogany Brown',
-        image: ,
+        image: 'https://img.discogs.com/dsMgL96vbiSu-kPASd05U6ihZr4=/fit-in/600x600/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-13732-1404646807-1278.jpeg.jpg',
         artists: 'Moodymann',
         label: 'Peacefrog',
         genre: 'Dance',
@@ -50,7 +50,7 @@ const vinyls = [
 // SEED
 
 Disk.create(vinyls)
-    .then(alltheVinyls => {
+    .then(allTheVinyls => {
         console.log(`Created ${allTheVinyls.length} vinyls`)
         mongoose.connection.close();
     })

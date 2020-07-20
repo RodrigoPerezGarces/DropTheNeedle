@@ -17,7 +17,7 @@ const diskSchema = new mongoose.Schema({
     },
     genre: {
         type: String,
-        enum: ['Jazz', 'Funk', 'Electronic', 'House', 'Techno', 'Acid', 'BreakBeat', 'Electro', 'Latin', 'Disco', 'Soul', 'Reggae', 'Rock', 'Experimental', 'Ambient', 'Pop']
+        enum: ['Jazz', 'Funk', 'Electronic', 'Dance', 'House', 'Deep House', 'Techno', 'Acid', 'BreakBeat', 'Electro', 'Latin', 'Disco', 'Soul', 'Reggae', 'Rock', 'Experimental', 'Ambient', 'Pop']
     },
     price: {
         type: Number

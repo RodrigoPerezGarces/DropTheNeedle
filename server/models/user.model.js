@@ -6,7 +6,6 @@ const userSchema = new mongoose.Schema({
     username: {
         FirstName: String,
         LastName: String,
-        unique: true
     },
     address: {
         Street: String,

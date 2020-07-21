@@ -1,7 +1,7 @@
 const mongoose = require("mongoose")
 const Schema = mongoose.Schema
 
-const diskSchema = new mongoose.Schema({
+const vinylSchema = new mongoose.Schema({
     title: {
         type: String,
     },
@@ -40,6 +40,6 @@ const diskSchema = new mongoose.Schema({
     timestamps: true
 })
 
-const Disk = mongoose.model("Disk", diskSchema)
+const Vinyl = mongoose.model("Vinyl", vinylSchema)
 
-module.exports = Disk
+module.exports = Vinyl

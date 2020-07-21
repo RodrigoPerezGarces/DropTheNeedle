@@ -1,12 +1,12 @@
 // Database
 const mongoose = require('mongoose')
-require('dotenv').config
 const dbName = 'drop-the-needle'
 mongoose.connect(`mongodb://localhost/${dbName}`)
+//mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })
 
 // Model
 
-const Disk = require('../models/disk.model')
+const Vinyl = require('../models/Vinyl.model')
 
 // DATA
 
@@ -49,7 +49,7 @@ const vinyls = [
 
 // SEED
 
-Disk.create(vinyls)
+Vinyl.create(vinyls)
     .then(allTheVinyls => {
         console.log(`Created ${allTheVinyls.length} vinyls`)
         mongoose.connection.close();

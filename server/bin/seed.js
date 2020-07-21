@@ -17,9 +17,9 @@ const vinyls = [
         artists: 'Fat Freddys Drop',
         label: 'The Drop',
         genre: 'Reggae',
-        price: 24.99 ,
+        price: '24.99 €' ,
         year: 2015 ,
-        CatNo: 'DRP025LP',
+        catNo: 'DRP025LP',
 
     },
     {
@@ -28,9 +28,9 @@ const vinyls = [
         artists: 'Omar S',
         label: 'FXHE',
         genre: ['House', 'Techno', 'Deep House'],
-        price: 51.99,
+        price: '51.99 €',
         year: 2013,
-        CatNo: 'AOS7700',
+        catNo: 'AOS7700',
 
     },
     {
@@ -39,9 +39,9 @@ const vinyls = [
         artists: 'Moodymann',
         label: 'Peacefrog',
         genre: 'Dance',
-        price: 30.99,
+        price: '30.99 €',
         year: 1998,
-        CatNo: 'PF074',
+        catNo: 'PF074',
 
     },
     

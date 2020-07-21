@@ -20,7 +20,7 @@ const vinylSchema = new mongoose.Schema({
         enum: ['Jazz', 'Funk', 'Electronic', 'Dance', 'House', 'Deep House', 'Techno', 'Acid', 'BreakBeat', 'Electro', 'Latin', 'Disco', 'Soul', 'Reggae', 'Rock', 'Experimental', 'Ambient', 'Pop']
     },
     price: {
-        type: Number
+        type: String
     },
     year: {
         type: Number

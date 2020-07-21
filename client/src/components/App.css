@@ -9,3 +9,22 @@ h1,h2,h3 {
   font-weight: 300;
   margin: 30px 0;
 }
+
+img {
+  width: 100%;
+  margin-top: 35px;
+  height: 95%;
+}
+
+.product-info{
+  padding-left: 4em;
+}
+
+.vinyl-detail-back{
+  display: inline-block;
+  margin-right: 3em;
+}
+
+.btn{
+  color: black
+}

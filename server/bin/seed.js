@@ -14,7 +14,7 @@ const vinyls = [
     {
         title: 'Bays',
         image: 'https://img.discogs.com/pN_U-H74Q5Okl-mvunT3bC34pcM=/fit-in/600x596/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/R-7635294-1445697551-9159.jpeg.jpg',
-        artists: 'Fat Freddys DRop',
+        artists: 'Fat Freddys Drop',
         label: 'The Drop',
         genre: 'Reggae',
         price: 24.99 ,

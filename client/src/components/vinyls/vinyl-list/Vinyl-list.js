@@ -4,6 +4,7 @@ import VinylCard from './Vinyl-card'
 
 import './Vinyl-list.css'
 import Container from 'react-bootstrap/Container'
+import Row from 'react-bootstrap/Row'
 
 class VinylList extends Component {
     constructor (){
@@ -28,11 +29,11 @@ class VinylList extends Component {
             <Container as='main' className='vinyls-page'>
                 <h1> For Sale </h1> 
                 {
-                    this.state.vinyls
-                        ?
-                        this.state.vinyls.map(elm => <VinylCard {...elm}/>)
-                        :
-                        <h3>CARGANDO</h3>
+                    !this.state.vinyls ? <h3>CARGANDO</h3> :
+                        
+                        <Row>
+                            {this.state.vinyls.map(elm => <VinylCard key={elm._id} {...elm} />)}
+                        </Row>
                 }
 
 

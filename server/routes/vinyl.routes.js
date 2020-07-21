@@ -15,7 +15,7 @@ router.get('/getAllVinyls', (req, res, next) => {   // en ninguno de los 2 me re
 router.get('/getOneVinyl/:vinyl_id', (req, res, next) => {
 
     //res.send(req.params.disk_id)
-    Vinyl.findById(req.param)
+    Vinyl.findById(req.param.vinyl_id)
         .then(response => res.json(response))
         .catch(err => next(err))
 

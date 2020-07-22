@@ -10,4 +10,6 @@ export default class VinylService {
 
     getAllVinyls = () => this.service.get('/getAllVinyls')
     getoneVinyl = id => this.service.get(`/getOneVinyl/${id}`)
+    createVinyl = vinyl => this.service.post('/newVinyl', vinyl)
+    
 }

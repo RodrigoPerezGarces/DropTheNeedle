@@ -23,14 +23,13 @@ const vinylSchema = new mongoose.Schema({
         type: String
     },
     year: {
-        type: Number
+        type: String
     },
     catNo: {
         type: String
     },
     tracklist: {
-        position: String,
-        title: String,
+        type: String
     },
 
     recordOwner: [{ type: Schema.Types.ObjectId, ref: 'User' }],

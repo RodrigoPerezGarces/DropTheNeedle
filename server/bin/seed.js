@@ -18,7 +18,7 @@ const vinyls = [
         label: 'The Drop',
         genre: 'Reggae',
         price: '24.99 €' ,
-        year: 2015 ,
+        year: '2015' ,
         catNo: 'DRP025LP',
 
     },
@@ -29,7 +29,7 @@ const vinyls = [
         label: 'FXHE',
         genre: ['House', 'Techno', 'Deep House'],
         price: '51.99 €',
-        year: 2013,
+        year: '2013',
         catNo: 'AOS7700',
 
     },
@@ -40,7 +40,7 @@ const vinyls = [
         label: 'Peacefrog',
         genre: 'Dance',
         price: '30.99 €',
-        year: 1998,
+        year: '1998',
         catNo: 'PF074',
 
     },

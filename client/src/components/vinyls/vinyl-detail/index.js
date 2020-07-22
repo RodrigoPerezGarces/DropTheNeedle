@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import VinylService from './../../../service/VinylService'
+import VinylService from '../../../service/VinylService'
 
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
@@ -30,7 +30,7 @@ class VinylDetail extends Component {
 
             !this.state.vinylDetails ? <h3> CARGANDO </h3> :
                 
-            <Container as='Main'>
+            <Container as='main'>
             
                 <Row>
                     <Col md={12} className='vinyl-detail-back'>
@@ -56,19 +56,20 @@ class VinylDetail extends Component {
                     <hr></hr>
                 <Row>
                     <Col md={6}>
-                        <h5>Details</h5>
+                        <h5><b>Details</b></h5>
                         <br></br>
-                        <h6>Genre</h6>
-                        <h8>{this.state.vinylDetails.genre}</h8>
-                        <br></br><br></br>
-                        <h6> Release Year</h6>
-                        <h8>{this.state.vinylDetails.year}</h8>
-                        <br></br><br></br>
-                        <h6>Cat No</h6>
-                        <h8>{this.state.vinylDetails.catNo}</h8>
+                        <h6><b>Genre</b></h6>
+                        <p>{this.state.vinylDetails.genre}</p>
+                        <br></br>
+                        <h6><b>Release Year</b></h6>
+                        <p>{this.state.vinylDetails.year}</p>
+                        <br></br>
+                        <h6><b>Cat No</b></h6>
+                        <p>{this.state.vinylDetails.catNo}</p>
                     </Col>
                     <Col md={6} className='product-info'>
-                        <h5>Tracklist</h5>
+                            <h5><b>Tracklist</b></h5>
+                            <p>{this.state.vinylDetails.tracklist}</p>
                     </Col>
                 </Row>
             </Container>

@@ -1,5 +1,8 @@
 import React, {Component} from 'react'
 import VinylService from '../../../service/VinylService'
+import Form from 'react-bootstrap/Form'
+import Container from 'react-bootstrap/Container'
+
 
 class VinylForm extends Component {
     constructor (){
@@ -33,72 +36,79 @@ class VinylForm extends Component {
 
     render () {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
         return (
-            <Form>
+            <Container>
+            <Form onSubmit={this.handldeFormSubmit}>
                 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Title</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.title} name='title' type='text' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Imagen (URL)</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.image} name='image' type='text' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Artists</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.artists} name='artists' type='text' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Label</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.label} name='label' type='text' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlSelect2">
+                <Form.Group>
                     <Form.Label>Genre</Form.Label>
-                    <Form.Control as="select" multiple>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
+                    <Form.Control onChange={this.handleInputChange} value={this.state.genre} name='genre' type='text' as="select">
+                        <option>Electronic</option>
+                        <option>Jazz</option>
+                        <option>Funk</option>
+                        <option>Dance</option>
+                        <option>House</option>
+                        <option>Deep House</option>
+                        <option>Techno</option>
+                        <option>Acid</option>
+                        <option>BreakBeat</option>
+                        <option>Electro</option>
+                        <option>Latin</option>
+                        <option>Brasil</option>
+                        <option>African</option>
+                        <option>Disco</option>
+                        <option>Soul</option>
+                        <option>Reggae</option>
+                        <option>Rock</option>
+                        <option>Experimental</option>
+                        <option>Ambient</option>
+                        <option>Pop</option>
                     </Form.Control>
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Price</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.price} name='price' type='text' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Year</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.year} name='year' type='number' />
                 </Form.Group>
 
-                <Form.Group controlId="exampleForm.ControlInput1">
+                <Form.Group >
                     <Form.Label>Cat No</Form.Label>
-                    <Form.Control type="email" placeholder="name@example.com" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.catNo} name='catNo' type='text' />
                 </Form.Group>
                 
-                <Form.Group controlId="exampleForm.ControlTextarea1">
+                <Form.Group>
                     <Form.Label>Tracklist</Form.Label>
-                    <Form.Control as="textarea" rows="3" />
+                    <Form.Control onChange={this.handleInputChange} value={this.state.tracklist} name='tracklist' type='text' as="textarea" rows="3" />
                 </Form.Group>
-            </Form>
 
-            <form onSubmit={this.handleFormSubmit}>
-                Title<input onChange={this.handleInputChange} value={this.state.title} name='title' type='text'/><br></br>
-                Image<input onChange={this.handleInputChange} value={this.state.image} name='image' type='text'/><br></br>
-                Artists<input onChange={this.handleInputChange} value={this.state.artists} name='artists' type='text'/><br></br>
-                Label<input onChange={this.handleInputChange} value={this.state.label} name='label' type='text'/><br></br>
-                Genre<input onChange={this.handleInputChange} value={this.state.genre} name='genre' type='text'/><br></br>
-                Price<input onChange={this.handleInputChange} value={this.state.price} name='price' type='text'/><br></br>
-                Year<input onChange={this.handleInputChange} value={this.state.year} name='year' type='number'/><br></br>
-                catNo<input onChange={this.handleInputChange} value={this.state.catNo} name='catNo' type='text' /><br></br>
-                Tracklist<input onChange={this.handleInputChange} value={this.state.tracklist} name='tracklist' type='text' /><br></br>
                 <input type='submit' value='Enviar' />
-            </form>
+
+                </Form>
+            </Container>
         )
     }
 }

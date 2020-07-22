@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import VinylService from '../../../service/VinylService'
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 //import Container from 'react-bootstrap/Container'
 
 
@@ -30,7 +31,7 @@ class VinylForm extends Component {
         e.preventDefault()
         this.vinylService
             .createVinyl(this.state)
-            .then(response => console.log(response))
+            .then(() => this.props.handleVinylSubmit())
             .catch(err => console.log(err))
     }
 
@@ -45,7 +46,7 @@ class VinylForm extends Component {
                 </Form.Group>
 
                 <Form.Group >
-                    <Form.Label>Imagen (URL)</Form.Label>
+                    <Form.Label>Image (URL)</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.image} name='image' type='text' />
                 </Form.Group>
 
@@ -105,7 +106,7 @@ class VinylForm extends Component {
                     <Form.Control onChange={this.handleInputChange} value={this.state.tracklist} name='tracklist' type='text' as="textarea" rows="3" />
                 </Form.Group>
 
-                <input type='submit' value='Enviar' />
+                <Button variant='warning' type='submit'>ADD</Button>
 
                 </Form>
         )

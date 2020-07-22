@@ -49,7 +49,8 @@ class VinylDetail extends Component {
                         <h2>{this.state.vinylDetails.price}</h2>
                         <br></br><br></br>
                         <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Cart</Link> 
-                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Wishlist</Link> 
+                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Wishlist</Link>
+                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link> 
                     </Col>
                 </Row>
                     <br></br>

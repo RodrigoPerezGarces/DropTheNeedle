@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import VinylService from '../../../service/VinylService'
 import Form from 'react-bootstrap/Form'
-import Container from 'react-bootstrap/Container'
+//import Container from 'react-bootstrap/Container'
 
 
 class VinylForm extends Component {
@@ -12,7 +12,7 @@ class VinylForm extends Component {
             image: '',
             artists: '',
             label: '',
-            genre: '',
+            genre: [],
             price: '',
             year: '',
             catNo: '',
@@ -36,8 +36,8 @@ class VinylForm extends Component {
 
     render () {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
         return (
-            <Container>
-            <Form onSubmit={this.handldeFormSubmit}>
+           
+            <Form onSubmit={this.handleFormSubmit}>
                 
                 <Form.Group >
                     <Form.Label>Title</Form.Label>
@@ -61,7 +61,7 @@ class VinylForm extends Component {
 
                 <Form.Group>
                     <Form.Label>Genre</Form.Label>
-                    <Form.Control onChange={this.handleInputChange} value={this.state.genre} name='genre' type='text' as="select">
+                    <Form.Control onChange={this.handleInputChange} value={this.state.genre} name='genre' as="select">
                         <option>Electronic</option>
                         <option>Jazz</option>
                         <option>Funk</option>
@@ -108,7 +108,6 @@ class VinylForm extends Component {
                 <input type='submit' value='Enviar' />
 
                 </Form>
-            </Container>
         )
     }
 }

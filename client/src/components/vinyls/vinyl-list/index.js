@@ -17,10 +17,10 @@ class VinylList extends Component {
             showModal: false
         }
         this.vinylService = new VinylService()
+        // this.searchTitle = this.searchTitle.bind(this)
     }
 
     componentDidMount = () => this.updateVinylList()
-    
     
     updateVinylList = () => {
         this.vinylService
@@ -28,12 +28,19 @@ class VinylList extends Component {
             .then(response => this.setState({ vinyls: response.data }))
             .catch(err => console.log(err))
     }
+    // searchTitle() {
+    //     this.vinylService
+    //         .findByTitle(this.state.vinyls.Title)
+    //         .then(response => this.setState({ vinyls: response.data }))
+    //         .catch(err => console.log(err))
+    // }
+   
 
     handleModal = status => this.setState({ showModal: status })
 
     handleVinylSubmit = () => {
-        this.props.closeModal()
-        this.props.updateVinylList()
+        this.handleModal(false)
+        this.updateVinylList()
     }
 
 
@@ -57,7 +64,7 @@ class VinylList extends Component {
                     <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>       
                         
                         <Modal.Body className='btn-modal-add'>
-                            <VinylForm closeModal={() => this.handleModal(false)} updateVinylList={this.updateVinylList}/>
+                            <VinylForm closeModal={() => this.handleModal(false)} handleVinylSubmit={this.handleVinylSubmit}/>
                         </Modal.Body>
 
                     </Modal>

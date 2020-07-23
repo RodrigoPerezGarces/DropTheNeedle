@@ -18,7 +18,7 @@ function App() {
       <Route exact path='/vinyls' render={() => <VinylList />} />
       {/* <Route path='/vinyls/newVinyl' render={() => <VinylForm />} /> */}
       <Route path='/vinyls/:vinyl_id' render={props => <VinylDetail {...props} />} />
-      </Switch>
+    </Switch>
 
     </>
   )

@@ -49,8 +49,10 @@ class VinylDetail extends Component {
                         <h2>{this.state.vinylDetails.price}</h2>
                         <br></br><br></br>
                         <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Cart</Link> 
+                        <br></br>
                         <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Wishlist</Link>
-                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link> 
+                       
+
                     </Col>
                 </Row>
                     <br></br>
@@ -67,6 +69,8 @@ class VinylDetail extends Component {
                         <br></br>
                         <h6><b>Cat No</b></h6>
                         <p>{this.state.vinylDetails.catNo}</p>
+                            <Link to='' className='btn btn-outline-warning btn-block btn-md'>Update</Link>
+                            <Link to='' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
                     </Col>
                     <Col md={6} className='product-info'>
                             <h5><b>Tracklist</b></h5>

@@ -8,22 +8,34 @@ import Col from 'react-bootstrap/Col'
 
 
 class VinylDetail extends Component {
-    constructor (){
-        super ()
+    constructor (props){
+        super (props)
         this.state = {
             vinylDetails:{}
         }
-    this.vinylService = new VinylService()
+        this.vinylService = new VinylService()
     }
 
     componentDidMount = () => {
         const id = this.props.match.params.vinyl_id
-
+    
+    
         this.vinylService
             .getoneVinyl(id)
             .then(response => this.setState({vinylDetails: response.data}))
             .catch(err => console.log(err))
     }
+
+    handleDeleteVinyl = e => {
+        const id = this.props.match.params.vinyl_id
+
+        e.preventDefault()
+        this.vinylService
+            .deleteVinyl(id)
+            .then(() => this.props.updateVinylList())
+            .catch(err => console.log(err))
+    }
+
 
     render () {
         return (
@@ -70,7 +82,7 @@ class VinylDetail extends Component {
                         <h6><b>Cat No</b></h6>
                         <p>{this.state.vinylDetails.catNo}</p>
                             <Link to='' className='btn btn-outline-warning btn-block btn-md'>Update</Link>
-                            <Link to='' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
+                            <Link onClick={this.handleDeleteVinyl} to='/vinyls' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
                     </Col>
                     <Col md={6} className='product-info'>
                             <h5><b>Tracklist</b></h5>

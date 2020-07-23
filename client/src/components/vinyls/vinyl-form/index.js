@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import VinylService from '../../../service/VinylService'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button'
 
 
 class VinylForm extends Component {
-    constructor (){
-        super ()
+    constructor() {
+        super()
         this.state = {
             title: '',
             image: '',
@@ -24,7 +24,7 @@ class VinylForm extends Component {
 
     handleInputChange = e => {
         const { name, value } = e.target
-        this.setState({ [name] : value})
+        this.setState({ [name]: value })
     }
 
     handleFormSubmit = e => {
@@ -35,11 +35,11 @@ class VinylForm extends Component {
             .catch(err => console.log(err))
     }
 
-    render () {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
+    render() {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
         return (
-           
+
             <Form onSubmit={this.handleFormSubmit}>
-                
+
                 <Form.Group >
                     <Form.Label>Title</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.title} name='title' type='text' />
@@ -100,7 +100,7 @@ class VinylForm extends Component {
                     <Form.Label>Cat No</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.catNo} name='catNo' type='text' />
                 </Form.Group>
-                
+
                 <Form.Group>
                     <Form.Label>Tracklist</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.tracklist} name='tracklist' type='text' as="textarea" rows="3" />
@@ -108,7 +108,7 @@ class VinylForm extends Component {
 
                 <Button variant='warning' type='submit'>ADD</Button>
 
-                </Form>
+            </Form>
         )
     }
 }

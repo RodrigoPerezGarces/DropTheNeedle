@@ -1,20 +1,40 @@
 import React, { Component } from 'react'
 import VinylService from '../../../service/VinylService'
+import VinylForm from './../vinyl-form'
 
 import Container from 'react-bootstrap/Container'
 import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
+import Button from 'react-bootstrap/Button'
 
 
 class VinylDetail extends Component {
     constructor (props){
         super (props)
         this.state = {
-            vinylDetails:{}
+            vinylDetails: {},
+            edit_id: undefined,
+            showModal: false
         }
         this.vinylService = new VinylService()
     }
+
+    handleModal = status => this.setState({ showModal: status })
+
+
+    editVinyl = id => {
+        this.setState({ edit_id: id }, () => this.handleModal(true))
+    }
+
+    editFinish = () => {
+
+        this.vinylService
+            .getOneVinyl()
+            .then(() => this.setState({ edit_id: undefined}))
+    }
+
+    handleModal = status => this.setState({ showModal: status })
 
     componentDidMount = () => {
         const id = this.props.match.params.vinyl_id
@@ -82,14 +102,16 @@ class VinylDetail extends Component {
                         <br></br>
                         <h6><b>Cat No</b></h6>
                         <p>{this.state.vinylDetails.catNo}</p>
-                            <Link to='' className='btn btn-outline-warning btn-block btn-md'>Update</Link>
-                            <Link onClick={this.handleDeleteVinyl} to='/vinyls' className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
+                            <Button onClick={() => this.editVinyl(this.state.id)} className='btn btn-outline-warning btn-block btn-md'>EDIT</Button>     
+                            <Link to='/vinyls' onClick={this.handleDeleteVinyl}  className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
                     </Col>
                     <Col md={6} className='product-info'>
                             <h5><b>Tracklist</b></h5>
                             <p>{this.state.vinylDetails.tracklist}</p>
                     </Col>
-                </Row>
+                    </Row>
+                    
+                    
             </Container>
         )
     }

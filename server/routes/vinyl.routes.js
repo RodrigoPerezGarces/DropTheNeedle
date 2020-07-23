@@ -47,6 +47,7 @@ router.delete('/getOneVinyl/:vinyl_id', (req, res, next) => {
     
 )
 
+// CREATE VINYL
 router.post('/newVinyl', (req, res, next) => {   //ESTO VA BIEN< TESTEADO CON POSTMAN
 
     Vinyl.create(req.body)

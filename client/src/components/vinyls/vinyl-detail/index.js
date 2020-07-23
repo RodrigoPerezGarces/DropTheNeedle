@@ -32,6 +32,7 @@ class VinylDetail extends Component {
         e.preventDefault()
         this.vinylService
             .deleteVinyl(id)
+            .then(() => this.props.handleDeleteVinyl())
             .then(() => this.props.updateVinylList())
             .catch(err => console.log(err))
     }

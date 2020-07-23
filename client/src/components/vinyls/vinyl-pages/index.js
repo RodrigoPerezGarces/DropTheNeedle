@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import VinylService from '../../../service/VinylService'
 import VinylCard from './Vinyl-card'
-import VinylForm from './../vinyl-form'
+import VinylForm from '../vinyl-form'
 
 import './Vinyl-list.css'
 import Container from 'react-bootstrap/Container'

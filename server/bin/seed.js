@@ -1,9 +1,9 @@
 // Database
 const mongoose = require('mongoose')
-const dbName = 'drop-the-needle'
-mongoose.connect(`mongodb://localhost/${dbName}`)
+// const dbName = 'drop-the-needle'
+// mongoose.connect(`mongodb://localhost/${dbName}`)
 //mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })
-mongoose.connect(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASSWORD}@revitalize-oltwc.gcp.mongodb.net/${process.env.DB_REMOTE}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASSWORD}@cluster0.xzq3c.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
 // Model
 
 const Vinyl = require('../models/Vinyl.model')
@@ -17,8 +17,8 @@ const vinyls = [
         artists: 'Fat Freddys Drop',
         label: 'The Drop',
         genre: 'Reggae',
-        price: '24.99 €' ,
-        year: '2015' ,
+        price: '24.99 €',
+        year: '2015',
         catNo: 'DRP025LP',
 
     },
@@ -44,7 +44,7 @@ const vinyls = [
         catNo: 'PF074',
 
     },
-    
+
 ]
 
 // SEED

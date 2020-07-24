@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import Modal from 'react-bootstrap/Modal'
 
 
 class VinylDetail extends Component {
@@ -18,6 +19,23 @@ class VinylDetail extends Component {
             showModal: false
         }
         this.vinylService = new VinylService()
+    }
+
+    componentDidMount = () => {
+        const id = this.props.match.params.vinyl_id
+
+
+        this.vinylService
+            .getoneVinyl(id)
+            .then(response => this.setState({ vinylDetails: response.data }))
+            .catch(err => console.log(err))
+    }
+
+    updateVinylList = () => {
+        this.vinylService
+            .getAllVinyls()
+            .then(response => this.setState({ vinyls: response.data }))
+            .catch(err => console.log(err))
     }
 
     handleModal = status => this.setState({ showModal: status })
@@ -36,15 +54,7 @@ class VinylDetail extends Component {
 
     handleModal = status => this.setState({ showModal: status })
 
-    componentDidMount = () => {
-        const id = this.props.match.params.vinyl_id
-    
-    
-        this.vinylService
-            .getoneVinyl(id)
-            .then(response => this.setState({vinylDetails: response.data}))
-            .catch(err => console.log(err))
-    }
+   
 
     handleDeleteVinyl = e => {
         const id = this.props.match.params.vinyl_id
@@ -52,9 +62,14 @@ class VinylDetail extends Component {
         e.preventDefault()
         this.vinylService
             .deleteVinyl(id)
-            .then(() => this.props.handleDeleteVinyl())
+            // .then(() => this.handleDeleteVinyl())
             .then(() => this.props.updateVinylList())
             .catch(err => console.log(err))
+    }
+
+    handleVinylSubmit = () => {
+        this.handleModal(false)
+        this.updateVinylList()
     }
 
 
@@ -102,8 +117,17 @@ class VinylDetail extends Component {
                         <br></br>
                         <h6><b>Cat No</b></h6>
                         <p>{this.state.vinylDetails.catNo}</p>
-                            <Button onClick={() => this.editVinyl(this.state.id)} className='btn btn-outline-warning btn-block btn-md'>EDIT</Button>     
-                            <Link to='/vinyls' onClick={this.handleDeleteVinyl}  className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
+                            <Button onClick={() => this.editVinyl(this.state.vinylDetails.id)} className='btn btn-outline-warning btn-block btn-md'>EDIT</Button>     
+                            <Link to='/vinyls' onClick={this.handleDeleteVinyl} handleVinylSubmit={this.handleVinylSubmit} className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
+                            
+                            <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>
+
+                                <Modal.Body className='btn-modal-add'>
+                                    <VinylForm edit_id={this.state.edit_id} handleVinylSubmit={this.handleVinylSubmit} finishEdit={this.editFinish} closeModal={() => this.handleModal(false)}  />
+                                </Modal.Body>
+
+                            </Modal>
+                            
                     </Col>
                     <Col md={6} className='product-info'>
                             <h5><b>Tracklist</b></h5>

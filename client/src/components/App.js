@@ -3,7 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { Switch, Route } from 'react-router-dom'
 import Navigation from './ui/navbar'
-import VinylList from './vinyls/vinyl-list'
+import VinylList from './vinyls/vinyl-pages'
 import VinylDetail from './vinyls/vinyl-detail'
 // import VinylForm from './vinyls/vinyl-form'
 

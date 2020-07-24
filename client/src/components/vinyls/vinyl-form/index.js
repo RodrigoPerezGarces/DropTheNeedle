@@ -6,8 +6,8 @@ import Button from 'react-bootstrap/Button'
 
 
 class VinylForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             title: '',
             image: '',
@@ -22,6 +22,13 @@ class VinylForm extends Component {
         this.vinylService = new VinylService()
     }
 
+    componentDidMount = () => {
+        this.props.edit_id && 
+            this.vinylService.getoneVinyl(this.props.edit_id)
+                            .then(response => this.setState({ vinylDetails: response.data }))
+                            .catch(err => console.log(err))
+    }
+
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
@@ -29,10 +36,19 @@ class VinylForm extends Component {
 
     handleFormSubmit = e => {
         e.preventDefault()
-        this.vinylService
-            .createVinyl(this.state)
-            .then(() => this.props.handleVinylSubmit())
-            .catch(err => console.log(err))
+
+        if (this.props.edit_id) {
+            this.vinylService
+                .updateVinyl(this.props.edit_id, { ...this.state.data })
+                .then(() => this.props.handleVinylSubmit())
+                .catch(err => console.log(err))
+        }
+        else {
+            this.vinylService
+                .createVinyl(this.state)
+                .then(() => this.props.handleVinylSubmit())
+                .catch(err => console.log(err))
+        }
     }
 
     render() {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP

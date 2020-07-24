@@ -5,17 +5,21 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import FormControl from 'react-bootstrap/FormControl'
 import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 const navigation = () => {
 
     return (
-        <Navbar bg="warning" variant="light" sticky='top'>
+        <Navbar bg="warning" variant="dark" sticky='top'>
             <Navbar.Brand>
-                <Link to="/">DTN_</Link>
+                <NavLink to="/">DTN_</NavLink>
             </Navbar.Brand>
-            <Nav className="mr-auto">
-                <Link to="/vinyls">Catalogue</Link>
-                <Link to="/vinyls">For Sale</Link>
-                <Link to="#pricing">Pricing</Link>
+            <Nav className="ml-auto">
+                <Nav.Link as='div'>
+                    <NavLink to="/" exact activeStyle={{ color: 'white' }}>Main</NavLink>
+                </Nav.Link>
+                <Nav.Link as='div'>
+                    <NavLink to="/vinyls" activeStyle={{ color: 'white' }}>Catalogue</NavLink>
+                </Nav.Link>
             </Nav>
             <Form inline>
                 <FormControl type="text" placeholder="Search" className="mr-sm-2" />

@@ -49,7 +49,7 @@ class VinylList extends Component {
         return (
             <>
             <Container as='main' className='vinyls-page'>
-                <h1> For Sale </h1> 
+                <h1> Catalogue </h1> 
 
                 <Button onClick={() => this.handleModal(true)} variant='warning' size="sm" className='btn-add'>Add Vinyl</Button>
                 
@@ -64,7 +64,7 @@ class VinylList extends Component {
                     <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>       
                         
                         <Modal.Body className='btn-modal-add'>
-                            <VinylForm closeModal={() => this.handleModal(false)} handleVinylSubmit={this.handleVinylSubmit}/>
+                            <VinylForm  handleVinylSubmit={this.handleVinylSubmit}/>
                         </Modal.Body>
 
                     </Modal>

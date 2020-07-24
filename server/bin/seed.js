@@ -1,5 +1,7 @@
 // Database
 const mongoose = require('mongoose')
+require('dotenv').config()
+
 // const dbName = 'drop-the-needle'
 // mongoose.connect(`mongodb://localhost/${dbName}`)
 //mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })

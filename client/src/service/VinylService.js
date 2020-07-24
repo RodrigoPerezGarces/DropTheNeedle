@@ -4,7 +4,7 @@ export default class VinylService {
 
     constructor() {
         this.service = axios.create({
-            baseURL: 'http://localhost:5000/vinyls'
+            baseURL: 'http://localhost:5000/api/vinyls'
         })
     }
 

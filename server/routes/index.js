@@ -1,6 +1,6 @@
 module.exports = app => {
 
     // Base URLS
-    app.use('/vinyls', require('./vinyl.routes'))
-    app.use('/', require('./auth.routes'))
+    app.use('/api/vinyls', require('./vinyl.routes'))
+    app.use('/api', require('./auth.routes'))
 }

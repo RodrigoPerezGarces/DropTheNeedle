@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const dbName = 'drop-the-needle'
 mongoose.connect(`mongodb://localhost/${dbName}`)
 //mongoose.connect(`mongodb://localhost/${process.env.DB}`, { useNewUrlParser: true, useUnifiedTopology: true })
-
+mongoose.connect(`mongodb+srv://${process.env.MONGODBUSER}:${process.env.MONGODBPASSWORD}@revitalize-oltwc.gcp.mongodb.net/${process.env.DB_REMOTE}?retryWrites=true&w=majority`, { useNewUrlParser: true, useUnifiedTopology: true })
 // Model
 
 const Vinyl = require('../models/Vinyl.model')

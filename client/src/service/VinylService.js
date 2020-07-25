@@ -4,7 +4,7 @@ export default class VinylService {
 
     constructor() {
         this.service = axios.create({
-            baseURL: `${process.env.REACT_APP_API_URL}/vinyls`
+            baseURL: 'http://localhost:5000/api/vinyls'
         })
     }
 
@@ -12,6 +12,6 @@ export default class VinylService {
     getoneVinyl = id => this.service.get(`/getOneVinyl/${id}`)
     createVinyl = vinyl => this.service.post('/newVinyl', vinyl)
     deleteVinyl = id => this.service.delete(`/getOneVinyl/${id}`)
-    updateVinyl = (id,data) => this.service.put(`/getOneVinyl/${id}`, data)
-    
+    updateVinyl = (id, data) => this.service.put(`/getOneVinyl/${id}`, data)
+
 }

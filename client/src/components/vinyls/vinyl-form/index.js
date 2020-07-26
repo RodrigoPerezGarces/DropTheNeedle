@@ -53,7 +53,8 @@ class VinylForm extends Component {
 
     render() {     // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
         return (
-
+            <>
+            <h3> ADD RELEASE </h3>
             <Form onSubmit={this.handleFormSubmit}>
 
                 <Form.Group >
@@ -124,7 +125,8 @@ class VinylForm extends Component {
 
                 <Button variant='warning' type='submit'>ADD</Button>
 
-            </Form>
+                </Form>
+                </>
         )
     }
 }

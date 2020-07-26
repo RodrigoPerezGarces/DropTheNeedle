@@ -29,10 +29,10 @@ module.exports = app => {
         User.findOne({ username })
             .then(user => {
                 if (!user) {
-                    return next(null, false, { message: "Nombre de usuario incorrecto" })
+                    return next(null, false, { message: "Wrong Username" })
                 }
                 if (!bcrypt.compareSync(password, user.password)) {
-                    return next(null, false, { message: "Contraseña incorrecta" })
+                    return next(null, false, { message: "Wrong Password" })
                 }
                 return next(null, user)
             })

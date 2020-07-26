@@ -5,8 +5,6 @@ import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
-import SigUpForm from '../Signup-form'
-import SignupForm from '../Signup-form'
 import { Link } from 'react-router-dom'
 
 
@@ -15,30 +13,40 @@ class LoginForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: '',
-            password: '',
-            showModal: false
+            username: undefined,
+            password: undefined
         }
-
+        
         this.authService = new AuthService()
-
-        console.log(this.props)
     }
+
+    handleModal = status => this.setState({ showModal: status })
 
     handleInputChange = e => {
         const { name, value } = e.target
         this.setState({ [name]: value })
     }
-
+    
+    
     handleFormSubmit = e => {
         e.preventDefault()
         this.authService
             .login(this.state)
-            .then(theLoggedInUser => this.props.history.push('/vinyls'))
+            .then(response => console.log(response.data))
             .catch(err => console.log(err.response.data.message))
     }
 
-    handleModal = status => this.setState({ showModal: status })
+    // handleFormSubmit = e => {
+    //     e.preventDefault()
+    //     this.authService
+    //         .login(this.state)
+    //         .then(response => {
+    //             this.props.setTheUser(response.data)
+    //             this.props.history.push('/vinyls')
+    //         })
+    //         .catch(err => console.log(err))
+    // }
+
 
 
     render() {
@@ -66,9 +74,7 @@ class LoginForm extends Component {
                                 <Button variant='warning btn-block' type='submit' >Log In</Button>
                                 <br></br>
 
-                                <div class='register'>You are a new Customer? <Link to='/signup' onClick={() => this.handleModal(false)} className='register-link'>Register now</Link>
-                                 
-                                </div>
+                                <div className='register'>You are a new Customer? <Link to='/signup' className='register-link'>Register now</Link></div>
 
                             </Form>
                         </Col>

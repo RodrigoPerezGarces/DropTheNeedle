@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { Switch, Route } from 'react-router-dom'
@@ -9,23 +9,35 @@ import SignupForm from './auth/Signup-form'
 import LoginForm from './auth/Login-form'
 
 
-function App() {
-  return (
+class App extends Component{
 
-    <>
-    <Navigation />
-    
-      
-    <Switch>
-      <Route exact path='/vinyls' render={() => <VinylList />} />
-      <Route path='/vinyls/:vinyl_id' render={props => <VinylDetail {...props} />} />
-      <Route path='/signup' render={props => <SignupForm {...props} />} />
-      <Route path='/login' render={props => <LoginForm {...props} />} />
+  constructor() {
+    super()
+    this.state = {
+      loggedInUser : null
+    }
+  }
 
-    </Switch>
+  setTheUser = user => this.setState({ loggedInUser: user}, () => console.log('el estado ha cambiado:', this.state))
 
-    </>
-  )
+  render() {
+    return (
+
+      <>
+        <Navigation />
+        
+          
+        <Switch>
+          <Route exact path='/vinyls' render={() => <VinylList />} />
+          <Route path='/vinyls/:vinyl_id' render={props => <VinylDetail {...props} />} />
+          <Route path='/signup' render={props => <SignupForm {...props} setTheUser={this.setTheUser}/>} />
+          <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser}/>} />
+
+        </Switch>
+
+      </>
+    )
+  }
 }
 
 export default App;

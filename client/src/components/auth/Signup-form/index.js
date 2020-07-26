@@ -18,8 +18,6 @@ class SignupForm extends Component {
         }
 
         this.authService = new AuthService()
-
-        console.log(this.props)
     }
 
     handleInputChange = e => {
@@ -31,7 +29,10 @@ class SignupForm extends Component {
         e.preventDefault()
         this.authService
             .signup(this.state)
-            .then(theLoggedInUser => this.props.history.push('/vinyls'))
+            .then(response => {
+                this.props.setTheUser(response.data)
+                this.props.history.push('/vinyls')
+            })
             .catch(err => console.log(err.response.data.message))
     }
 

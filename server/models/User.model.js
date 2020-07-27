@@ -30,6 +30,11 @@ const userSchema = new mongoose.Schema({
         enum: ['ADMIN', 'USER'],
         default: 'USER'
     },
+    isAdmin: {
+        type: Boolean,
+        require: true,
+        default: false
+    }
 
 
 }, {

@@ -7,6 +7,7 @@ import VinylList from './vinyls/vinyl-pages'
 import VinylDetail from './vinyls/vinyl-detail'
 import SignupForm from './auth/Signup-form'
 import LoginForm from './auth/Login-form'
+import AuthService from '../service/AuthService'
 
 
 class App extends Component{
@@ -16,9 +17,21 @@ class App extends Component{
     this.state = {
       loggedInUser : null
     }
+
+    this.authService = new AuthService()
   }
 
-  setTheUser = user => this.setState({ loggedInUser: user}, () => console.log('el estado ha cambiado:', this.state))
+  setTheUser = user => this.setState({ loggedInUser: user }, () => console.log('the state has changed:', this.state))
+  
+
+  componentDidMount = () => this.fetchUser()
+
+  fetchUser = () => {
+    this.authService
+      .isLoggedIn()
+      .then(response => this.state.loggedInUser === null && this.setState({ loggedInUser: response.data }))
+      .catch(err => console.log({ err }))
+  }
 
   render() {
     return (
@@ -31,7 +44,8 @@ class App extends Component{
           <Route exact path='/vinyls' render={() => <VinylList />} />
           <Route path='/vinyls/:vinyl_id' render={props => <VinylDetail {...props} />} />
           <Route path='/signup' render={props => <SignupForm {...props} setTheUser={this.setTheUser}/>} />
-          <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser}/>} />
+          <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser} />} />
+ 
 
         </Switch>
 

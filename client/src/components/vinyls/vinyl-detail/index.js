@@ -63,7 +63,7 @@ class VinylDetail extends Component {
         this.vinylService
             .deleteVinyl(id)
             // .then(() => this.handleDeleteVinyl())
-            .then(() => this.props.updateVinylList())
+            .then(() => this.updateVinylList())
             .catch(err => console.log(err))
     }
 
@@ -96,7 +96,21 @@ class VinylDetail extends Component {
                         <br></br><br></br>
                         <h2>{this.state.vinylDetails.price}</h2>
                         <br></br><br></br>
-                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Cart</Link> 
+                            <button className="snipcart-add-item btn btn-outline-warning btn-block btn-md"
+                            data-item-id={this.state.vinylDetails._id}
+                            data-item-price={this.state.vinylDetails.price}
+                            data-item-url="/"
+                            data-item-image={this.state.vinylDetails.image}
+                            data-item-name={this.state.vinylDetails.title}>
+                                Add to cart
+                            </button>
+                        {/* <Button className='buy-button snipcart-add-item btn btn-outline-warning btn-block btn-md'
+                                data-item-id={ this.state.vinylDetails._id }
+                                data-item-price={this.state.vinylDetails.price}
+                                data-item-url='/'
+                                data-item-name={this.state.vinylDetails.title}
+                                > ADD TO CART
+                        </Button>  */}
                         <br></br>
                         <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Wishlist</Link>
                        

@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 
 import Card from 'react-bootstrap/Card'
 import Col from 'react-bootstrap/Col'
+//import BuyButton from './BuyButton'
+
 
 
 const VinylCard = ({_id, title, artists, price, image}) => {
@@ -16,7 +18,7 @@ const VinylCard = ({_id, title, artists, price, image}) => {
                     {artists} ||| {price}
                     </Card.Text>
                     <Link to={`/vinyls/${_id}`} className='btn btn-outline-warning btn-block btn-sm'>See Details</Link>
-                        
+                    {/* <BuyButton></BuyButton> */}
             </Card.Body>
             </Card>
         </Col>

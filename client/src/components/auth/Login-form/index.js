@@ -13,10 +13,11 @@ class LoginForm extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            username: undefined,
-            password: undefined
+            username: '',
+            password: ''
+
         }
-        
+
         this.authService = new AuthService()
     }
 
@@ -26,30 +27,33 @@ class LoginForm extends Component {
         const { name, value } = e.target
         this.setState({ [name]: value })
     }
-    
-    
-    handleFormSubmit = e => {
-        e.preventDefault()
-        this.authService
-            .login(this.state)
-            .then(response => console.log(response.data))
-            .catch(err => console.log(err.response.data.message))
-    }
+
 
     // handleFormSubmit = e => {
     //     e.preventDefault()
     //     this.authService
     //         .login(this.state)
-    //         .then(response => {
-    //             this.props.setTheUser(response.data)
-    //             this.props.history.push('/vinyls')
-    //         })
-    //         .catch(err => console.log(err))
+    //         .then(response => console.log(response.data))
+
+    //         .catch(err => console.log(err.response.data.message))
     // }
+
+    handleFormSubmit = e => {
+        e.preventDefault()
+        this.authService
+            .login(this.state)
+            .then(response => {
+
+                this.props.setTheUser(response.data)
+                this.props.history.push('/vinyls')
+            })
+            .catch(err => console.log(err.response.data.message))
+    }
 
 
 
     render() {
+        console.log(this.props)
         return (
             <>
 
@@ -58,28 +62,28 @@ class LoginForm extends Component {
                         <Col>
                             <h3> Log In </h3>
                             <hr></hr>
-                            <Form onSubmit={this.handleFormSubmit}>
+                                <Form onSubmit={this.handleFormSubmit}>
 
-                                <Form.Group >
-                                    <Form.Label>Username</Form.Label>
-                                    <Form.Control onChange={this.handleInputChange} value={this.state.username} name='username' type='text' />
-                                </Form.Group>
+                                    <Form.Group >
+                                        <Form.Label>Username</Form.Label>
+                                        <Form.Control onChange={this.handleInputChange} value={this.state.username} name='username' type='text' />
+                                    </Form.Group>
 
-                                <Form.Group >
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control onChange={this.handleInputChange} value={this.state.password} name='password' type='password' />
-                                    <Form.Text className='text-muted'> Must be min. of 3 characters </Form.Text>
-                                </Form.Group>
+                                    <Form.Group >
+                                        <Form.Label>Password</Form.Label>
+                                        <Form.Control onChange={this.handleInputChange} value={this.state.password} name='password' type='password' />
+                                        <Form.Text className='text-muted'> Must be min. of 3 characters </Form.Text>
+                                    </Form.Group>
 
-                                <Button variant='warning btn-block' type='submit' >Log In</Button>
-                                <br></br>
+                                    <Button variant='warning btn-block' type='submit' >Log In</Button>
+                                    <br></br>
 
-                                <div className='register'>You are a new Customer? <Link to='/signup' className='register-link'>Register now</Link></div>
+                                    <div className='register'>You are a new Customer? <Link to='/signup' className='register-link'>Register now</Link></div>
 
-                            </Form>
+                                </Form>
                         </Col>
 
-                        
+
                     </Row>
 
                 </Container>

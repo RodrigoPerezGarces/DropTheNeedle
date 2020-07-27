@@ -24,7 +24,7 @@ const vinylSchema = new mongoose.Schema({
         require: true
     },
     price: {
-        type: String,
+        type: Number,
         require: true
     },
     year: {
@@ -35,6 +35,9 @@ const vinylSchema = new mongoose.Schema({
         require: true
     },
     tracklist: {
+        type: String
+    },
+    description:{
         type: String
     },
     countInStock: {

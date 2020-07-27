@@ -9,11 +9,13 @@ import { NavLink } from 'react-router-dom'
 import AuthService from '../../../service/AuthService'
 import Modal from 'react-bootstrap/Modal'
 import LoginForm from '../../auth/Login-form'
+import Icon from '../logo/cart-logo'
 
 
 class Navigation extends Component {
     constructor(props) {
         super(props)
+        this.myRef = React.createRef()
         this.state = {
             showModal: false
         }
@@ -39,7 +41,7 @@ class Navigation extends Component {
              
              return (
                 <>
-                <Navbar bg="warning" variant="dark" expand='md' sticky='top' >
+                <Navbar className='navbar-color' variant="dark" expand='md'  >
                     <Navbar.Brand>
                         <NavLink to="/">DTN_</NavLink>
                     </Navbar.Brand>
@@ -50,23 +52,27 @@ class Navigation extends Component {
                     <Nav className="ml-auto">
                 
                         <Nav.Link as='div'>
-                            <NavLink to="/" exact activeStyle={{ color: 'white' }}>MAIN</NavLink>
+                            <NavLink to="/" exact activestyle={{ color: 'white' }}>MAIN</NavLink>
                         </Nav.Link>
 
                         <Nav.Link as='div'>
-                            <NavLink to="/vinyls" activeStyle={{ color: 'white' }}>CATALOGUE</NavLink>
-                        </Nav.Link>
-
-                        <Nav.Link as='div'>
-                            <span onClick={() => this.handleModal(true)} activeStyle={{ color: 'white' }}>LOGIN</span>
-                             </Nav.Link>
-                             
-                        <Nav.Link as='div'>
-                            <span onClick={this.logout} activeStyle={{ color: 'white' }}>LOGOUT</span>
+                            <NavLink to="/vinyls" activestyle={{ color: 'white' }}>CATALOGUE</NavLink>
                         </Nav.Link>
                                  
                         <Nav.Link as='div'>
-                            <NavLink to="/profile" activeStyle={{ color: 'white' }}>MY ACCOUNT</NavLink>
+                            <NavLink to="/login" activestyle={{ color: 'white' }}>LOGIN</NavLink>
+                        </Nav.Link>
+
+                        {/* <Nav.Link as='div'>
+                                     <span ref={this.myRef} onClick={() => this.handleModal(true)} activestyle={{ color: 'white' }}>LOGIN</span>
+                        </Nav.Link> */}
+                             
+                        <Nav.Link as='div'>
+                            <span onClick={this.logout} activestyle={{ color: 'white' }}>LOGOUT</span>
+                        </Nav.Link>
+                                 
+                        <Nav.Link as='div'>
+                            <NavLink to="/profile" activestyle={{ color: 'white' }}>MY ACCOUNT</NavLink>
                         </Nav.Link>
 
                     
@@ -76,7 +82,22 @@ class Navigation extends Component {
 
                     <Form inline>
                         <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-                        <Button variant="outline-info">Search</Button>
+                             
+                        <div>
+                             
+                            <button className='snipcart-checkout'>
+                            <Icon className='cart-logo'/>
+                            </button>
+
+                            <span className="snipcart-total-price"> €0.00</span>     
+                            (<span className='snipcart-items-count'>0</span>)
+
+                                
+                            
+                             </div>
+
+                     
+
                     </Form>
                              
                     

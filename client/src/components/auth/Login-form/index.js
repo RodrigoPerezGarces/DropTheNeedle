@@ -59,7 +59,7 @@ class LoginForm extends Component {
 
                 <Container as='main'>
                     <Row>
-                        <Col>
+                        <Col md={{ span: 6, offset: 3 }}>
                             <h3> Log In </h3>
                             <hr></hr>
                                 <Form onSubmit={this.handleFormSubmit}>
@@ -75,7 +75,7 @@ class LoginForm extends Component {
                                         <Form.Text className='text-muted'> Must be min. of 3 characters </Form.Text>
                                     </Form.Group>
 
-                                    <Button variant='warning btn-block' type='submit' >Log In</Button>
+                                    <Button className='navbar-color btn-block' type='submit' >Log In</Button>
                                     <br></br>
 
                                     <div className='register'>You are a new Customer? <Link to='/signup' className='register-link'>Register now</Link></div>

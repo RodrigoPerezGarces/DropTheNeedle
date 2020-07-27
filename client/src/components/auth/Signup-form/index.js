@@ -63,7 +63,7 @@ class SignupForm extends Component {
                                 <Form.Control onChange={this.handleInputChange} value={this.state.email} name='email' type='email' />
                             </Form.Group>
 
-                            <Button variant='warning' type='submit'>Sign Up</Button>
+                                <Button className='navbar-color btn-block' type='submit'>Sign Up</Button>
 
                             </Form>
                     </Col>

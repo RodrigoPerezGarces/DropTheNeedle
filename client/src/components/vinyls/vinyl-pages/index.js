@@ -51,7 +51,7 @@ class VinylList extends Component {
             <Container as='main' className='vinyls-page'>
                 <h1> Catalogue </h1> 
 
-                <Button onClick={() => this.handleModal(true)} variant='warning' size="sm" className='btn-add'>Add Vinyl</Button>
+                    <Button onClick={() => this.handleModal(true)} className='btn-outline-info navbar-color-second' size="sm" className='btn-add'>Add Vinyl</Button>
                 
 
                 {

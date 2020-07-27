@@ -14,9 +14,10 @@ class VinylForm extends Component {
             artists: '',
             label: '',
             genre: [],
-            price: '',
+            price: Number,
             year: '',
             catNo: '',
+            description: '',
             tracklist: '',
         }
         this.vinylService = new VinylService()
@@ -116,6 +117,11 @@ class VinylForm extends Component {
                 <Form.Group >
                     <Form.Label>Cat No</Form.Label>
                     <Form.Control onChange={this.handleInputChange} value={this.state.catNo} name='catNo' type='text' />
+                </Form.Group>
+                    
+                <Form.Group>
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control onChange={this.handleInputChange} value={this.state.description} name='description' type='text' as="textarea" rows="3" />
                 </Form.Group>
 
                 <Form.Group>

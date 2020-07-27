@@ -41,3 +41,27 @@ a, a:hover {
 .register-link {
   color: #ffc107
 }
+
+.cart-logo{
+  background-color: #ffc107;
+}
+
+.navbar-color{
+ background: linear-gradient(90deg,#5082e4,#52bcf8);
+ margin-bottom: 30px
+}
+
+.navbar-color-second{
+ background: linear-gradient(90deg,#52bcf8,#5082e4);
+}
+
+
+
+
+
+
+
+
+
+
+

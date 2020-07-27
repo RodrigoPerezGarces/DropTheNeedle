@@ -8,6 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
+import ArrowIcon from '../../ui/logo/arrow-logo'
 
 
 class VinylDetail extends Component {
@@ -64,6 +65,7 @@ class VinylDetail extends Component {
             .deleteVinyl(id)
             // .then(() => this.handleDeleteVinyl())
             .then(() => this.updateVinylList())
+            .then(() => this.props.history.push('/vinyls'))
             .catch(err => console.log(err))
     }
 
@@ -82,7 +84,8 @@ class VinylDetail extends Component {
             
                 <Row>
                     <Col md={12} className='vinyl-detail-back'>
-                        <Link to='/vinyls'>Back</Link> 
+                        <ArrowIcon className='arrow-icon'/>
+                        <Link to='/vinyls'>  Back To Catalogue</Link> 
                     </Col>    
                 </Row>
                 <Row>
@@ -94,25 +97,19 @@ class VinylDetail extends Component {
                         <h3>{this.state.vinylDetails.title}</h3>
                         <h5>{this.state.vinylDetails.label}</h5>
                         <br></br><br></br>
-                        <h2>{this.state.vinylDetails.price}</h2>
+                        <h2>{this.state.vinylDetails.price} €</h2>
                         <br></br><br></br>
-                            <button className="snipcart-add-item btn btn-outline-warning btn-block btn-md"
+                            <button className="snipcart-add-item  btn btn-outline-info navbar-color-second btn-block btn-md"
                             data-item-id={this.state.vinylDetails._id}
                             data-item-price={this.state.vinylDetails.price}
-                            data-item-url="/"
+                            data-item-url="/cart"
                             data-item-image={this.state.vinylDetails.image}
-                            data-item-name={this.state.vinylDetails.title}>
+                            data-item-name={this.state.vinylDetails.title}
+                            data-item-description={this.state.vinylDetails.description}>
                                 Add to cart
                             </button>
-                        {/* <Button className='buy-button snipcart-add-item btn btn-outline-warning btn-block btn-md'
-                                data-item-id={ this.state.vinylDetails._id }
-                                data-item-price={this.state.vinylDetails.price}
-                                data-item-url='/'
-                                data-item-name={this.state.vinylDetails.title}
-                                > ADD TO CART
-                        </Button>  */}
                         <br></br>
-                        <Link to='' className='btn btn-outline-warning btn-block btn-md'>Add To Wishlist</Link>
+                            <Link to='' className='btn btn btn-outline-info navbar-color-second btn-block btn-md'>Add To Wishlist</Link>
                        
 
                     </Col>
@@ -131,8 +128,8 @@ class VinylDetail extends Component {
                         <br></br>
                         <h6><b>Cat No</b></h6>
                         <p>{this.state.vinylDetails.catNo}</p>
-                            <Button onClick={() => this.editVinyl(this.state.vinylDetails.id)} className='btn btn-outline-warning btn-block btn-md'>EDIT</Button>     
-                            <Link to='/vinyls' onClick={this.handleDeleteVinyl} handleVinylSubmit={this.handleVinylSubmit} className='btn btn-outline-warning btn-block btn-md'>Eliminate</Link>     
+                            <Button onClick={() => this.editVinyl(this.state.vinylDetails.id)} className='btn btn-outline-info navbar-color-second btn-block btn-md'>EDIT</Button>     
+                            <Link to='/vinyls' onClick={this.handleDeleteVinyl} handleVinylSubmit={this.handleVinylSubmit} className='btn btn-outline-info navbar-color-second btn-block btn-md'>Eliminate</Link>     
                             
                             <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>
 
@@ -143,8 +140,11 @@ class VinylDetail extends Component {
                             </Modal>
                             
                     </Col>
-                    <Col md={6} className='product-info'>
-                            <h5><b>Tracklist</b></h5>
+                        <Col md={6} className='product-info'>
+                            <h5><b>Description</b></h5><hr></hr>
+                            <p>{this.state.vinylDetails.description}</p>
+                            <br></br>
+                            <h5><b>Tracklist</b></h5><hr></hr>
                             <p>{this.state.vinylDetails.tracklist}</p>
                     </Col>
                     </Row>

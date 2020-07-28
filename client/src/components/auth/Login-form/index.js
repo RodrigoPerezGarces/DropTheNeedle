@@ -43,11 +43,11 @@ class LoginForm extends Component {
         this.authService
             .login(this.state)
             .then(response => {
-
                 this.props.setTheUser(response.data)
                 this.props.history.push('/vinyls')
+                this.props.handleModal(false)
             })
-            .catch(err => console.log(err.response.data.message))
+            .catch(err => console.log(err))
     }
 
 

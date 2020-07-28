@@ -34,10 +34,12 @@ class App extends Component{
   }
 
   render() {
+
+    console.log(this.props)
     return (
 
       <>
-        <Navigation />
+        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser}/> //
         
           
         <Switch>

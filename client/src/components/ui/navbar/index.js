@@ -10,9 +10,17 @@ import AuthService from '../../../service/AuthService'
 import Modal from 'react-bootstrap/Modal'
 import LoginForm from '../../auth/Login-form'
 import Icon from '../logo/cart-logo'
+import { withRouter } from 'react-router'
+import PropTypes from 'prop-types'
 
 
 class Navigation extends Component {
+
+    static propTypes = {  
+        match: PropTypes.object.isRequired,    
+        location: PropTypes.object.isRequired,
+        history: PropTypes.object.isRequired  }
+                  
     constructor(props) {
         super(props)
         this.myRef = React.createRef()
@@ -33,15 +41,14 @@ class Navigation extends Component {
 
     handleModal = status => this.setState({ showModal: status })
 
-    handleFormSubmit = () => {
-        this.handleModal(false)
-    }
+
     
          render() {
-             
+    
+             console.log(this.props)
              return (
                 <>
-                <Navbar className='navbar-color' variant="dark" expand='md'  >
+                <Navbar className='navbar-color' variant="dark" expand='md' >
                     <Navbar.Brand>
                         <NavLink to="/">DTN_</NavLink>
                     </Navbar.Brand>
@@ -58,14 +65,10 @@ class Navigation extends Component {
                         <Nav.Link as='div'>
                             <NavLink to="/vinyls" activestyle={{ color: 'white' }}>CATALOGUE</NavLink>
                         </Nav.Link>
-                                 
-                        <Nav.Link as='div'>
-                            <NavLink to="/login" activestyle={{ color: 'white' }}>LOGIN</NavLink>
-                        </Nav.Link>
 
-                        {/* <Nav.Link as='div'>
+                        <Nav.Link as='div'>
                                      <span ref={this.myRef} onClick={() => this.handleModal(true)} activestyle={{ color: 'white' }}>LOGIN</span>
-                        </Nav.Link> */}
+                        </Nav.Link>
                              
                         <Nav.Link as='div'>
                             <span onClick={this.logout} activestyle={{ color: 'white' }}>LOGOUT</span>
@@ -106,7 +109,7 @@ class Navigation extends Component {
                      <Modal size='md' show={this.state.showModal} onHide={() => this.handleModal(false)}>
 
                          <Modal.Body className='btn-modal-add'>
-                             <LoginForm handleFormSubmit={this.handleFormSubmit} />
+                             <LoginForm setTheUser={this.props.setTheUser} history={this.props.history} handleModal={this.handleModal}/>
                          </Modal.Body>
 
                      </Modal>
@@ -115,4 +118,4 @@ class Navigation extends Component {
         }
 }
 
-export default Navigation
+export default withRouter(Navigation)

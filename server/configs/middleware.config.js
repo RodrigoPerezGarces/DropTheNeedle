@@ -10,14 +10,9 @@ const corsOptions = {
         const originIsWhitelisted = whitelist.includes(origin)
         cb(null, originIsWhitelisted)
     },
+
+    credentials: true
 }
-// const whitelist = ['http://localhost:5000/', 'http://drop-the-needle.herokuapp.com/']
-// const corsOptions = {
-//     origin: (origin, cb) => {
-//         const originIsWhitelisted = whitelist.includes(origin)
-//         cb(null, originIsWhitelisted)
-//     }
-// }
 
 module.exports = app => {
     app.use(logger('dev'))

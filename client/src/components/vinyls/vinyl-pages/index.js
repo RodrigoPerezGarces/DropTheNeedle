@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import VinylService from '../../../service/VinylService'
 import VinylCard from './Vinyl-card'
 import VinylForm from '../vinyl-form'
@@ -10,18 +10,21 @@ import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
 class VinylList extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             vinyls: undefined,
-            showModal: false
+            showModal: false,
         }
         this.vinylService = new VinylService()
         // this.searchTitle = this.searchTitle.bind(this)
     }
 
-    componentDidMount = () => this.updateVinylList()
-    
+    componentDidMount = () => {
+        this.updateVinylList()
+
+    }
+
     updateVinylList = () => {
         this.vinylService
             .getAllVinyls()
@@ -34,7 +37,7 @@ class VinylList extends Component {
     //         .then(response => this.setState({ vinyls: response.data }))
     //         .catch(err => console.log(err))
     // }
-   
+
 
     handleModal = status => this.setState({ showModal: status })
 
@@ -45,32 +48,33 @@ class VinylList extends Component {
 
 
 
-    render () {
+    render() {
+        console.log(this.state.loggedInUser)
         return (
             <>
-            <Container as='main' className='vinyls-page'>
-                <h1> Catalogue </h1> 
+                <Container as='main' className='vinyls-page'>
+                    <h1> Catalogue </h1>
 
-                    <Button onClick={() => this.handleModal(true)} className='btn-outline-info navbar-color-second' size="sm" className='btn-add'>Add Vinyl</Button>
-                
 
-                {
-                    !this.state.vinyls ? <h3>CARGANDO</h3> :
-                        
-                        <Row>
-                            {this.state.vinyls.map(elm => <VinylCard key={elm._id} {...elm} />)}
-                        </Row>
-                }
-                    <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>       
-                        
-                        <Modal.Body className='btn-modal-add'>
-                            <VinylForm  handleVinylSubmit={this.handleVinylSubmit}/>
-                        </Modal.Body>
+                    {
+                        !this.state.vinyls ? <h3>CARGANDO</h3> :
 
-                    </Modal>
+                            <Row>
+                                {this.state.vinyls.map(elm => <VinylCard key={elm._id} {...elm} />)}
+                            </Row>
+                    }
+                </Container>
 
-            </Container>
-                
+                <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>
+
+                    <Modal.Body className='btn-modal-add'>
+                        <VinylForm handleVinylSubmit={this.handleVinylSubmit} />
+                    </Modal.Body>
+
+                </Modal>
+
+
+
             </>
         )
     }

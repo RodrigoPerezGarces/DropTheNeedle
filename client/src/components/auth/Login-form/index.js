@@ -28,16 +28,6 @@ class LoginForm extends Component {
         this.setState({ [name]: value })
     }
 
-
-    // handleFormSubmit = e => {
-    //     e.preventDefault()
-    //     this.authService
-    //         .login(this.state)
-    //         .then(response => console.log(response.data))
-
-    //         .catch(err => console.log(err.response.data.message))
-    // }
-
     handleFormSubmit = e => {
         e.preventDefault()
         this.authService
@@ -53,7 +43,6 @@ class LoginForm extends Component {
 
 
     render() {
-        console.log(this.props)
         return (
             <>
 
@@ -78,7 +67,7 @@ class LoginForm extends Component {
                                     <Button className='navbar-color btn-block' type='submit' >Log In</Button>
                                     <br></br>
 
-                                    <div className='register'>You are a new Customer? <Link to='/signup' className='register-link'>Register now</Link></div>
+                                <div className='register'>You are a new Customer? <Link to='/signup' className='register-link' handleModal={this.handleModal}>Register now</Link></div>
 
                                 </Form>
                         </Col>

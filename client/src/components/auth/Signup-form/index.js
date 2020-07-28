@@ -31,6 +31,7 @@ class SignupForm extends Component {
             .signup(this.state)
             .then(response => {
                 this.props.setTheUser(response.data)
+                this.props.handleToast(true, 'You have been registered in at DTN')
                 this.props.history.push('/vinyls')
             })
             .catch(err => console.log(err.response.data.message))

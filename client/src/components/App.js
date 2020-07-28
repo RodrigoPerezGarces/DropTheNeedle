@@ -3,6 +3,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Navigation from './ui/navbar'
+import Message from './ui/CustomToast'
 import VinylList from './vinyls/vinyl-pages'
 import VinylDetail from './vinyls/vinyl-detail'
 import SignupForm from './auth/Signup-form'
@@ -21,7 +22,7 @@ class App extends Component {
     this.state = {
       loggedInUser: null,
       toast: {
-        show: true,
+        visible: false,
         text: ''
       }
     }
@@ -41,10 +42,13 @@ class App extends Component {
       .catch(err => console.log({ err }))
   }
 
-  handleToast = (visible, text ='') => this.setState({
-    ...this.state,
-    toast: { show: visible, text }
-  })
+  handleToast = (visible, text ='') => {
+    let toastCopy = { ...this.state.toast }
+    toastCopy = { visible, text  }
+    this.setState({ toast: toastCopy})
+  }
+    
+   
 
   render() {
 
@@ -53,7 +57,7 @@ class App extends Component {
     return (
 
       <>
-        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handle={this.handleToast} />
+        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} />
 
 
         <Switch>
@@ -67,24 +71,14 @@ class App extends Component {
           <Route path='/vinyls/:vinyl_id' render={props => <VinylDetail {...props} setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />} />
           <Route path='/add' render={props => this.state.loggedInUser.isAdmin === true ? (<VinylForm {...props} />) : (<Redirect to='/vinyls' />)} />
 
-          <Route path='/signup' render={props => <SignupForm {...props} setTheUser={this.setTheUser} />} />
-          <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser} />} />
+          <Route path='/signup' render={props => <SignupForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
+          <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
 
         </Switch>
 
-        <Toast style={{
-          position: 'fixed',
-          top: 60,
-          right: 600,
-        }}
-          show={this.state.toast.show} onClose={() => this.handleToast(false)}  delay={4000} autohide>
-          
-          <Toast.Header>
-            <h5 className='mr-auto'>DropTheNeedle_</h5>
-          
-          </Toast.Header>
-          <Toast.Body>{this.state.toast.text}</Toast.Body>
-        </Toast>
+        <Message {...this.state.toast} handleToast={this.handleToast}/>
+
+        
     
 
       </>

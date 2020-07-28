@@ -35,6 +35,7 @@ class LoginForm extends Component {
             .then(response => {
                 this.props.setTheUser(response.data)
                 this.props.history.push('/vinyls')
+                this.props.handleToast(true, 'You are now logged in at DTN')
                 this.props.handleModal(false)
             })
             .catch(err => console.log(err))

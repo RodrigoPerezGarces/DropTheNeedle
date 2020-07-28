@@ -34,8 +34,8 @@ class Navigation extends Component {
             .logout()
             .then(() => {
                 this.props.setTheUser(false)
-                this.props.handleToast(true, 'User has been logged out')})
-            .then(() => this.props.history.push('/login'))
+                this.props.handleToast(true, 'You have been logged out')
+                this.props.history.push('/login')})
             .catch(err => console.log(err))
     }
 

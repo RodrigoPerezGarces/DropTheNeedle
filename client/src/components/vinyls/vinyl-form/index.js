@@ -4,7 +4,6 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import Col from 'react-bootstrap/Col'
-//import Container from 'react-bootstrap/Container'
 
 
 class VinylForm extends Component {
@@ -57,7 +56,6 @@ class VinylForm extends Component {
     }
 
     render() {
-        // FORM CONTROL el segundo en FORMS/REACT-BOOTSTRAP
         return (
             <>
                 <Container>

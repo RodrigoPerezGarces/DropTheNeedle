@@ -49,7 +49,6 @@ class VinylList extends Component {
 
 
     render() {
-        console.log(this.state.loggedInUser)
         return (
             <>
                 <Container as='main' className='vinyls-page'>

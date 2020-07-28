@@ -34,10 +34,9 @@ class Navigation extends Component {
             .logout()
             .then(() => {
                 this.props.setTheUser(false)
-
-            })
+                this.props.handleToast(true, 'User has been logged out')})
+            .then(() => this.props.history.push('/login'))
             .catch(err => console.log(err))
-
     }
 
     handleModal = status => this.setState({ showModal: status })
@@ -74,7 +73,7 @@ class Navigation extends Component {
                                         </Nav.Link>
 
                                         <Nav.Link as='div'>
-                                            <span onClick={this.logout} activestyle={{ color: 'white' }}>LOGOUT</span>
+                                            <NavLink to='/login' onClick={this.logout} activestyle={{ color: 'white' }}>LOGOUT</NavLink>
                                         </Nav.Link>
                                     </>
                                 ) : (
@@ -82,25 +81,17 @@ class Navigation extends Component {
                                         <span ref={this.myRef} onClick={() => this.handleModal(true)} activestyle={{ color: 'white' }}>LOGIN</span>
                                     </Nav.Link>
                                 )}
+                            
                             {this.props.loggedInUser && this.props.loggedInUser.role === "ADMIN" ?
                                 (
                                     <Nav.Link as="span">
-                                        <NavLink to="/add">Crear producto</NavLink>
+                                        <NavLink to="/add">ADD RELEASE</NavLink>
                                     </Nav.Link>
                                 ) : null}
-
-
-
-
 
                             <Nav.Link as='div'>
                                 <NavLink to="/profile" activestyle={{ color: 'white' }}>Hi, {this.props.loggedInUser ? this.props.loggedInUser.username : 'Guest'} </NavLink>
                             </Nav.Link>
-
-
-
-
-
 
                         </Nav>
 

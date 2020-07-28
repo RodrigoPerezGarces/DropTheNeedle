@@ -76,7 +76,6 @@ class VinylDetail extends Component {
 
 
     render() {
-        console.log(this.state.vinylDetails)
         return (
 
             !this.state.vinylDetails ? <h3> CARGANDO </h3> :

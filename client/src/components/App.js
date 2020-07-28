@@ -11,6 +11,7 @@ import VinylForm from './vinyls/vinyl-form'
 import AuthService from '../service/AuthService'
 import ProfilePage from './pages/profile'
 import IndexPage from './pages/index'
+import Toast from 'react-bootstrap/Toast'
 
 
 class App extends Component {
@@ -18,7 +19,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      loggedInUser: null
+      loggedInUser: null,
+      toast: {
+        show: true,
+        text: ''
+      }
     }
 
     this.authService = new AuthService()
@@ -36,6 +41,11 @@ class App extends Component {
       .catch(err => console.log({ err }))
   }
 
+  handleToast = (visible, text ='') => this.setState({
+    ...this.state,
+    toast: { show: visible, text }
+  })
+
   render() {
 
     //this.fetchUser()
@@ -43,7 +53,7 @@ class App extends Component {
     return (
 
       <>
-        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} />
+        <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handle={this.handleToast} />
 
 
         <Switch>
@@ -60,9 +70,22 @@ class App extends Component {
           <Route path='/signup' render={props => <SignupForm {...props} setTheUser={this.setTheUser} />} />
           <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser} />} />
 
-
-
         </Switch>
+
+        <Toast style={{
+          position: 'fixed',
+          top: 60,
+          right: 600,
+        }}
+          show={this.state.toast.show} onClose={() => this.handleToast(false)}  delay={4000} autohide>
+          
+          <Toast.Header>
+            <h5 className='mr-auto'>DropTheNeedle_</h5>
+          
+          </Toast.Header>
+          <Toast.Body>{this.state.toast.text}</Toast.Body>
+        </Toast>
+    
 
       </>
     )

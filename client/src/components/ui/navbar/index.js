@@ -10,6 +10,7 @@ import LoginForm from '../../auth/Login-form'
 import Icon from '../logo/cart-logo'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
+import Search from '../searchbar'
 
 
 class Navigation extends Component {
@@ -98,8 +99,10 @@ class Navigation extends Component {
                     </Navbar.Collapse>
 
                     <Form inline>
-                        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-
+                        
+                        <div>
+                            <Search />
+                        </div>
 
                         <div>
 

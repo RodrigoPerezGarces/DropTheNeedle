@@ -13,7 +13,7 @@ import AuthService from '../service/AuthService'
 import ProfilePage from './pages/profile'
 import IndexPage from './pages/index'
 import Toast from 'react-bootstrap/Toast'
-
+import Search from './ui/searchbar'
 
 class App extends Component {
 
@@ -57,8 +57,11 @@ class App extends Component {
     return (
 
       <>
+       
+        
+        <div>
         <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} />
-
+        </div>
 
         <Switch>
 

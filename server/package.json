@@ -19,6 +19,7 @@
     "gatsby-plugin-snipcart-advanced": "^1.0.0",
     "hbs": "^4.0.1",
     "mongoose": "^5.2.10",
+    "mongoose-algolia": "^1.10.1",
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
     "passport": "^0.4.1",

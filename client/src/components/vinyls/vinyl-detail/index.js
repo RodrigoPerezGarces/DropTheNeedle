@@ -32,6 +32,14 @@ class VinylDetail extends Component {
             .catch(err => console.log(err))
     }
 
+    getOneVinyl = (id) => {
+        this.vinylService
+            .getoneVinyl(id)
+            .then(response => this.setState({ vinylDetails: response.data }))
+            .catch(err => console.log(err))
+
+    }
+
     updateVinylList = () => {
         this.vinylService
             .getAllVinyls()
@@ -48,12 +56,11 @@ class VinylDetail extends Component {
 
     editFinish = () => {
 
-        this.vinylService
-            .getOneVinyl()
-            .then(() => this.setState({ edit_id: undefined }))
-    }
+        this.handleVinylSubmit()
+        this.getOneVinyl(this.state.edit_id)
+        this.setState({ edit_id: undefined })
 
-    handleModal = status => this.setState({ showModal: status })
+    }
 
 
 
@@ -70,8 +77,8 @@ class VinylDetail extends Component {
     }
 
     handleVinylSubmit = () => {
-        this.handleModal(false)
         this.updateVinylList()
+        this.handleModal(false)
     }
 
 
@@ -93,8 +100,8 @@ class VinylDetail extends Component {
                             <img src={this.state.vinylDetails.image} alt={this.state.vinylDetails.title} />
                         </Col>
                         <Col md={6} className='product-info'>
-                            <h1><b>{this.state.vinylDetails.artists}</b></h1>
-                            <h3>{this.state.vinylDetails.title}</h3>
+                            <h1><b>{this.state.vinylDetails.title}</b></h1>
+                            <h3>{this.state.vinylDetails.artists}</h3>
                             <h5>{this.state.vinylDetails.label}</h5>
                             <br></br><br></br>
                             <h2>{this.state.vinylDetails.price} €</h2>
@@ -139,7 +146,7 @@ class VinylDetail extends Component {
                             <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>
 
                                 <Modal.Body className='btn-modal-add'>
-                                    <VinylForm edit_id={this.state.edit_id} handleVinylSubmit={this.handleVinylSubmit} finishEdit={this.editFinish} closeModal={() => this.handleModal(false)} />
+                                    <VinylForm edit_id={this.state.edit_id} postFinish={this.handleVinylSubmit} finishEdit={this.editFinish} closeModal={() => this.handleModal(false)} />
                                 </Modal.Body>
 
                             </Modal>

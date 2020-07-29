@@ -44,18 +44,19 @@ class VinylForm extends Component {
         if (this.props.edit_id) {
             this.vinylService
                 .updateVinyl(this.props.edit_id, { ...this.state.vinylDetails })
-                .then(() => this.props.editFinish())
+                .then(() => this.props.finishEdit())
                 .catch(err => console.log(err))
         }
         else {
             this.vinylService
                 .createVinyl(this.state.vinylDetails)
-                .then(() => this.props.handleVinylSubmit())
+                .then(() => this.props.history.push('/vinyls'))
                 .catch(err => console.log(err))
         }
     }
 
     render() {
+
         return (
             <>
                 <Container>

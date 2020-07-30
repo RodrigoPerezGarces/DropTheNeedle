@@ -10,7 +10,7 @@ import LoginForm from '../../auth/Login-form'
 import Icon from '../logo/cart-logo'
 import { withRouter } from 'react-router'
 import PropTypes from 'prop-types'
-import Search from '../searchbar'
+import '../ui.css'
 
 
 class Navigation extends Component {
@@ -48,9 +48,9 @@ class Navigation extends Component {
 
         return (
             <>
-                <Navbar className='navbar-color' variant="dark" expand='md' >
-                    <Navbar.Brand>
-                        <NavLink to="/">DTN_</NavLink>
+                <Navbar className='navbar-color navbar1' variant="dark" expand='md' >
+                    <Navbar.Brand class='navbar1'>
+                        <NavLink to="/"><img src='../../../../dtnlogo3.png' className='logonavbar basic-navbar-nav'></img></NavLink>
                     </Navbar.Brand>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -99,10 +99,14 @@ class Navigation extends Component {
                     </Navbar.Collapse>
 
                     <Form inline>
+                        <FormControl onChange={this.handleSearchInput} value={this.state.searchText} type="text" placeholder="Search" className="mr-sm-2" />
                         
-                        <div>
-                            <Search />
-                        </div>
+
+                    </Form>
+
+                    <Form inline>
+                        
+
 
                         <div>
 
@@ -120,6 +124,7 @@ class Navigation extends Component {
 
 
                     </Form>
+                    
 
 
                 </Navbar>

@@ -1,13 +1,20 @@
 import React from 'react'
-
+import Carousel from 'react-bootstrap/Carousel'
+import './indexPage.css'
+import Container from 'react-bootstrap/Container'
+import Col from 'react-bootstrap/Col'
+import CarouselIndex from './carousel'
 
 const IndexPage = () => {
 
     return (
         <>
-            <h1> DROP THE NEEDLE </h1>
-            <h3> GET YOUR WAX </h3>
             
+            <body className='teaser'>
+            <CarouselIndex />
+            </body>
+
+           
         </>
     )
 }

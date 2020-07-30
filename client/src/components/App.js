@@ -13,7 +13,7 @@ import AuthService from '../service/AuthService'
 import ProfilePage from './pages/profile'
 import IndexPage from './pages/index'
 import Toast from 'react-bootstrap/Toast'
-import Search from './ui/searchbar'
+import Footer from './ui/footer'
 
 class App extends Component {
 
@@ -63,6 +63,8 @@ class App extends Component {
         <Navigation setTheUser={this.setTheUser} loggedInUser={this.state.loggedInUser} handleToast={this.handleToast} />
         </div>
 
+        
+
         <Switch>
 
           <Route exact path='/' render={() => <IndexPage />} />
@@ -78,6 +80,10 @@ class App extends Component {
           <Route path='/login' render={props => <LoginForm {...props} setTheUser={this.setTheUser} handleToast={this.handleToast} />} />
 
         </Switch>
+        
+        <div>
+          <Footer />
+        </div>
 
         <Message {...this.state.toast} handleToast={this.handleToast}/>
 

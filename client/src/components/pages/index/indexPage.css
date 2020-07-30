@@ -1,0 +1,43 @@
+.carousel img{
+    height: 600px;
+    width: 1800px;
+}
+
+.carousel {
+    
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+}
+
+.carousel-back{
+    background-image: url( './images/manuel-sardo-HwFv8EZYC_o-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 1800px;
+}
+
+.teaser {
+        position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    overflow: hidden;
+    margin-bottom: 200px;
+    background-color: #f8f7f5;
+    letter-spacing: 1px;
+    height: 700px;
+}
+
+.fluid{
+    padding-left: 60px;
+    padding-right: 60px;
+    max-width: 1600px;
+}
+
+.logo-index{
+    height: 300px;
+    width: 300px;
+    margin-left: 500px
+}

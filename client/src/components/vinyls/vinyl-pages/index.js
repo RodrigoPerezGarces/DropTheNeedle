@@ -6,6 +6,7 @@ import VinylForm from '../vinyl-form'
 import './Vinyl-list.css'
 import Container from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
 
@@ -17,7 +18,6 @@ class VinylList extends Component {
             showModal: false,
         }
         this.vinylService = new VinylService()
-        // this.searchTitle = this.searchTitle.bind(this)
     }
 
     componentDidMount = () => {
@@ -52,7 +52,11 @@ class VinylList extends Component {
         return (
             <>
                 <Container as='main' className='vinyls-page'>
+               
+                    
+                <Col md={12}>
                     <h1> Catalogue </h1>
+                    <hr></hr>
 
 
                     {
@@ -61,7 +65,8 @@ class VinylList extends Component {
                             <Row>
                                 {this.state.vinyls.map(elm => <VinylCard key={elm._id} {...elm} />)}
                             </Row>
-                    }
+                        }
+                    </Col>
                 </Container>
 
                 <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>

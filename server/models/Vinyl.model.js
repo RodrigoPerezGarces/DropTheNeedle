@@ -54,20 +54,10 @@ const vinylSchema = new mongoose.Schema({
     timestamps: true
 })
 
-vinylSchema.plugin(mongooseAlgolia, {
-    appId: process.env.ALGOLIA_APP_ID,
-    apiKey: process.env.ALGOLIA_API_KEY,
-    indexName: 'DropTheNeedle',
-    selector: 'title _id image genre artists label price year catNo description tracklist',
-    debug: true
 
-})
 
 const Vinyl = mongoose.model("Vinyl", vinylSchema)
 
-Vinyl.SyncToAlgolia()
-Vinyl.SetAlgoliaSettings({
-    searchableAttributes: ['title', 'artists', 'label', 'genre']
-})
+
 
 module.exports = Vinyl

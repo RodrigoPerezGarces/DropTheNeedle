@@ -13,7 +13,6 @@ import AuthService from '../service/AuthService'
 import ProfilePage from './pages/profile'
 import IndexPage from './pages/index'
 import Toast from 'react-bootstrap/Toast'
-import Footer from './ui/footer'
 
 class App extends Component {
 
@@ -81,9 +80,7 @@ class App extends Component {
 
         </Switch>
         
-        <div>
-          <Footer />
-        </div>
+       
 
         <Message {...this.state.toast} handleToast={this.handleToast}/>
 

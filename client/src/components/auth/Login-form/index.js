@@ -35,7 +35,6 @@ class LoginForm extends Component {
             .then(response => {
                 this.props.setTheUser(response.data)
                 this.props.history.push('/vinyls')
-                this.props.handleToast(true, 'You are now logged in at DTN')
                 this.props.handleModal(false)
             })
             .catch(err => console.log(err))
@@ -65,7 +64,7 @@ class LoginForm extends Component {
                                         <Form.Text className='text-muted'> Must be min. of 3 characters </Form.Text>
                                     </Form.Group>
 
-                                    <Button className='navbar-color btn-block' type='submit' >Log In</Button>
+                                <Button className='navbar-color btn-block' type='submit' handleModal={this.handleModal}>Log In</Button>
                                     <br></br>
 
                                 <div className='register'>You are a new Customer? <Link to='/signup' className='register-link' handleModal={this.handleModal}>Register now</Link></div>

@@ -116,7 +116,6 @@ class VinylDetail extends Component {
                                 Add to cart
                             </button>
                             <br></br>
-                            <Link to='' className='btn btn btn-outline-info navbar-color-second btn-block btn-md'>Add To Wishlist</Link>
 
 
                         </Col>

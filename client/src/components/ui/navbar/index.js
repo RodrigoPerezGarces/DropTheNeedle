@@ -98,11 +98,7 @@ class Navigation extends Component {
 
                     </Navbar.Collapse>
 
-                    <Form inline>
-                        <FormControl onChange={this.handleSearchInput} value={this.state.searchText} type="text" placeholder="Search" className="mr-sm-2" />
-                        
-
-                    </Form>
+                    
 
                     <Form inline>
                         
@@ -132,7 +128,7 @@ class Navigation extends Component {
                 <Modal size='lg' show={this.state.showModal} onHide={() => this.handleModal(false)}>
 
                     <Modal.Body className='btn-modal-add'>
-                        <LoginForm setTheUser={this.props.setTheUser} history={this.props.history} handleModal={this.handleModal} />
+                        <LoginForm setTheUser={this.props.setTheUser} history={this.props.history} handleModal={this.handleModal}/>
                     </Modal.Body>
 
                 </Modal>

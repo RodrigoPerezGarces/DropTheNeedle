@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container'
 import Carousel from 'react-bootstrap/Carousel'
 import Col from 'react-bootstrap/Col'
 import VinylService from '../../../service/VinylService'
-import VinylCard from '../../vinyls/vinyl-pages/Vinyl-card'
+import { Link } from 'react-router-dom'
 
 
 class CarouselIndex extends Component {
@@ -44,7 +44,7 @@ class CarouselIndex extends Component {
                             />
 
                             <Carousel.Caption>
-                                <h3>{elm.title}</h3>
+                                <h3><Link to={`/vinyls/${elm._id}`}>{elm.title}</Link></h3>
                                 <p>{elm.artists}</p>
                             </Carousel.Caption>
 

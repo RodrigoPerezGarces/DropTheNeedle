@@ -34,42 +34,42 @@ class SignupForm extends Component {
                 this.props.handleToast(true, 'You have been registered in at DTN')
                 this.props.history.push('/vinyls')
             })
-            .catch(err => console.log(err.response.data.message))
+            .catch(err => console.log(err))
     }
 
     render() {
         return (
             <>
-                
-            <Container as='main'>
-                <Row>
+
+                <Container as='main'>
+                    <Row>
                         <Col md={{ span: 6, offset: 3 }}>
-                        <h3> Sign Up </h3>
-                        <hr></hr>
+                            <h3> Sign Up </h3>
+                            <hr></hr>
                             <Form onSubmit={this.handleFormSubmit}>
-                                
-                            <Form.Group >
-                                <Form.Label>Username</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.username} name='username' type='text' />
-                            </Form.Group>
 
-                            <Form.Group >
-                                <Form.Label>Password</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.password} name='password' type='password' />
+                                <Form.Group >
+                                    <Form.Label>Username</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} value={this.state.username} name='username' type='text' />
+                                </Form.Group>
+
+                                <Form.Group >
+                                    <Form.Label>Password</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} value={this.state.password} name='password' type='password' />
                                     <Form.Text className='text-muted'> Must be min. of 3 characters </Form.Text>
-                            </Form.Group>
+                                </Form.Group>
 
-                            <Form.Group >
-                                <Form.Label>E-Mail</Form.Label>
-                                <Form.Control onChange={this.handleInputChange} value={this.state.email} name='email' type='email' />
-                            </Form.Group>
+                                <Form.Group >
+                                    <Form.Label>E-Mail</Form.Label>
+                                    <Form.Control onChange={this.handleInputChange} value={this.state.email} name='email' type='email' />
+                                </Form.Group>
 
                                 <Button className='navbar-color btn-block' type='submit'>Sign Up</Button>
 
                             </Form>
-                    </Col>
-                </Row>
-                
+                        </Col>
+                    </Row>
+
                 </Container>
             </>
         )
